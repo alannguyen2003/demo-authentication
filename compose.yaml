@@ -10,12 +10,13 @@
     volumes:
       - demovolume:/app
     depends_on:
-      - sqlserver
+      sqlserver: 
+        condition: service_healthy
     networks:
       - demo
   sqlserver:
     container_name: sqlserver
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
       - "1435:1433"
     volumes:

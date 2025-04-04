@@ -7,4 +7,26 @@
       dockerfile: DemoAuthentication/Dockerfile
     ports: 
         - "8080:8080"
-    
+    volumes:
+      - demovolume:/app
+    depends_on:
+      - sql-server
+    networks:
+      - demo
+  sql-server:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1434:1433"
+    volumes:
+      - sqlserver:/var/opt/mssql
+    environment:
+      SA_PASSWORD: Password12345@
+      ACCEPT_EULA: Y
+    networks:
+      - demo
+networks:
+  demo: 
+volumes:
+  sqlserver:
+  demovolume:

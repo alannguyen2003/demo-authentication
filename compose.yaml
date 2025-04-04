@@ -1,0 +1,11 @@
+﻿services:
+  demo:
+    container_name: demodotnet
+    image: demoauthentication
+    build:
+      context: .
+      dockerfile: DemoAuthentication/Dockerfile
+    ports: 
+        - "8080:8080"
+        - "443:443"
+    

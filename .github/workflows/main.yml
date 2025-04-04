@@ -13,5 +13,7 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
-    - name: Run "docker compose"
-      run: docker compose up --build -d
+    - name: Run "docker compose db"
+      run: docker compose up -d sqlserver
+    - name: Run "docker compose build"
+      run: docker compose up --build -d demo
